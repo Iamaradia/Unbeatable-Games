@@ -1,52 +1,8 @@
 import pygame
 import asyncio
 import sys
-
-
-# Example imports from your other files
-# Ensure these files have async functions defined inside them!
-# from tictactoe import play_ttt
-# from connect4 import play_c4
-
-# Placeholder async game loops for demonstration purposes
-async def play_ttt(screen):
-    print("Starting Tic Tac Toe...")
-    font = pygame.font.SysFont(None, 40)
-    running = True
-    while running:
-        for event in pygame.event.get():
-            if event.type == pygame.QUIT:
-                pygame.quit()
-                sys.exit()
-            if event.type == pygame.KEYDOWN and event.key == pygame.K_ESCAPE:
-                running = False  # Return to main menu
-
-        screen.fill((20, 30, 40))
-        text = font.render("Tic Tac Toe Running! Press ESC to Exit", True, (255, 255, 255))
-        screen.blit(text, (50, 250))
-
-        pygame.display.flip()
-        await asyncio.sleep(0)
-
-
-async def play_c4(screen):
-    print("Starting Connect 4...")
-    font = pygame.font.SysFont(None, 40)
-    running = True
-    while running:
-        for event in pygame.event.get():
-            if event.type == pygame.QUIT:
-                pygame.quit()
-                sys.exit()
-            if event.type == pygame.KEYDOWN and event.key == pygame.K_ESCAPE:
-                running = False  # Return to main menu
-
-        screen.fill((40, 20, 30))
-        text = font.render("Connect 4 Running! Press ESC to Exit", True, (255, 255, 255))
-        screen.blit(text, (50, 250))
-
-        pygame.display.flip()
-        await asyncio.sleep(0)
+from tictactoe import play_ttt
+from connect4 import play_c4
 
 
 async def main():
@@ -78,7 +34,7 @@ async def main():
                 running = False
 
             if event.type == pygame.MOUSEBUTTONDOWN and event.button == 1:
-                # Check if Left Side (Tic Tac Toe) was clicked
+                # Check if Left Side (Tic-tac-toe) was clicked
                 if left_rect.collidepoint(mouse_pos):
                     await play_ttt(screen)
 
